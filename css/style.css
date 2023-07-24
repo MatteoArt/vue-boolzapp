@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DBDBD2;
+}
+.green-header {
+    height: 120px;
+    background-color: #009688;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+.container {
+    position: relative;
+    max-width: 1000px;
+    height: 500px;
+    margin: 30px auto;
+    overflow: auto;
+    display: flex;
+}
+.container-left {
+    flex-basis: 35%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.container-right {
+    flex-basis: 65%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.up-down-bar {
+    height: 50px;
+    border: 1px dashed orange;
+}
+.main-content {
+    flex-grow: 1;
+    overflow: auto;
+    border: 1px dashed red;
+}
