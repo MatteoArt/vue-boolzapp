@@ -1,26 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Boolzapp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
+
 <body>
     <header class="green-header"></header>
     <div id="app">
         <div class="container">
             <div class="container-left">
-                <div class="up-down-bar"></div>
+                <div class="up-down-bar" id="user-bar">
+                    <div class="up-down-bar-item">
+                        <div class="avatar-container" id="user-profile">
+                            <img :src="'images/' + user.image" alt="Avatar user" :class="imgRound">
+                        </div>
+                        <div>{{ user.userName }}</div>
+                    </div>
+
+                    <div class="icon-container">
+                        <i class="fa-solid fa-circle-notch fa-lg"></i>
+                        <i class="fa-solid fa-message fa-lg"></i>
+                        <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                    </div>
+                </div>
+                <div class="notifiche"></div>
+                <div class="input-group">
+                    <div class="div-form">
+                        <div class="btn-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <input type="text" class="input-val" placeholder="Cerca o inizia una nuova chat"
+                        >
+                    </div>
+                </div>
+                <div class="chat-container">
+                    <!-- item contatti generati dinamicamente -->
+                    <div class="chat-item" v-for="person in contacts">
+                        <div class="avatar-container">
+                            <img :src="'images/' + person.avatar + '.jpg'" :class="imgRound"
+                                :alt="'img' + person.avatar">
+                        </div>
+                        <div>
+                            <h4>{{ person.name }}</h4>
+                            <span class="text-info">Ultimo messaggio inviato</span>
+                        </div>
+                        <div class="item-hour">
+                            <span class="text-info">12:00</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="container-right">
-                <div class="up-down-bar"></div>
+                <div class="up-down-bar">
+                    <div class="up-down-bar-item">
+                        <div class="current-contact">
+                            <img :src="'images/' + contacts[0].avatar + '.jpg'"
+                            :alt="contacts[0].name" :class="imgRound">
+                        </div>
+                        <div>
+                            <div>{{ contacts[0].name }}</div>
+                            <span class="text-gray">Ultimo accesso oggi alle 12:00</span>
+                        </div>
+                    </div>
+                    <div class="icon-container">
+                        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                        <i class="fa-solid fa-paperclip fa-lg"></i>
+                        <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                    </div>
+                </div>
                 <div class="main-content">
 
                 </div>
-                <div class="up-down-bar"></div>
+                <div class="up-down-bar">
+                    <div class="btn"></div>
+                    <input type="text" class="input-message"
+                    placeholder="Scrivi un messaggio">
+                    <div class="btn"></div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>
