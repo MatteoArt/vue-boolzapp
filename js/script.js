@@ -170,6 +170,7 @@ Vue.createApp({
                 image: 'avatar_io.jpg',
             },
             currentChat: null,
+            messageClass: 'message',
         }
     },
     methods: {
@@ -178,13 +179,19 @@ Vue.createApp({
         onChatClick(chatItem) {
             
             this.currentChat = chatItem;
-            console.log(this.currentChat);
         },
+        ctrlMessage(state) {
+            if (state === 'sent') {
+                return 'message-sent';
+            } else if (state === 'received') {
+                return 'message-received';
+            }
+        }
+    },
     beforeMount() {
         //prima che viene caricato il dom dell'applicazione vado ad
         //inizializzare l'utente da mostrare con il primo oggetto della lista
         //contatti per evitare errore con null
         this.currentChat = this.contacts[0];
-    },
     }
 }).mount("#app");

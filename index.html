@@ -83,11 +83,10 @@
                     </div>
                 </div>
                 <div class="main-content">
-                    <div class="message-row">
-                        <div class="message message-sent">Messaggio inviato</div>
-                    </div>
-                    <div class="message-row">
-                        <div class="message message-received">Messaggio ricevuto</div>
+                    <div class="message-row" v-for="mes in currentChat.messages">
+                        <div :class="messageClass + ' ' + ctrlMessage(mes.status)">
+                            {{ mes.message }}
+                        </div>
                     </div>
                 </div>
                 <div class="up-down-bar" id="message-bar">
