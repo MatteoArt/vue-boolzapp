@@ -49,7 +49,7 @@
                 </div>
                 <div class="chat-container">
                     <!-- item contatti generati dinamicamente -->
-                    <div class="chat-item" v-for="person in contacts">
+                    <div class="chat-item" v-for="person in contacts" @click="showMessages(person)">
                         <div class="avatar-container">
                             <img :src="'images/' + person.avatar + '.jpg'" :class="imgRound"
                                 :alt="'img' + person.avatar">

@@ -109,6 +109,10 @@ body {
     border-bottom: 1px solid rgb(235, 235, 235);
     display: flex;
     gap: 15px;
+    cursor: pointer;
+}
+.chat-item:hover {
+    background-color: #E9EBEB;
 }
 
 .chat-item:last-child {

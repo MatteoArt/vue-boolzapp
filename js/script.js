@@ -169,9 +169,14 @@ Vue.createApp({
                 userName: 'Sofia',
                 image: 'avatar_io.jpg',
             },
+            currentChat: null,
         }
     },
     methods: {
-
+        //funzione che prende in input l'oggetto cliccato e salva
+        //l'array dei messaggi dentro la proprietà currentChat
+        showMessages(chatItem) {
+            console.log(chatItem);
+        },
     }
 }).mount("#app");
