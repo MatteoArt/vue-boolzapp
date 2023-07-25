@@ -171,6 +171,10 @@ Vue.createApp({
             },
             currentChat: null,
             messageClass: 'message',
+            newMessage: {
+                message: "",
+                status: ''
+            }
         }
     },
     methods: {
@@ -186,7 +190,23 @@ Vue.createApp({
             } else if (state === 'received') {
                 return 'message-received';
             }
-        }
+        },
+        addMessage(curChat) {
+            //clono l'oggetto per eliminare la reattività
+            const newMessageClone = {...this.newMessage};
+            newMessageClone.status = 'sent';
+
+            curChat.messages.push(newMessageClone);
+
+            //intervallo che ogni 1 sec stampa il messaggio del computer
+            setTimeout(function () {
+                const cpuMessage = {...this.newMessage};
+                cpuMessage.message = 'ok';
+                cpuMessage.status = 'received';
+                curChat.messages.push(cpuMessage);
+            }, 1000);
+        },
+
     },
     beforeMount() {
         //prima che viene caricato il dom dell'applicazione vado ad
