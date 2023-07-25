@@ -173,10 +173,18 @@ Vue.createApp({
         }
     },
     methods: {
-        //funzione che prende in input l'oggetto cliccato e salva
-        //l'array dei messaggi dentro la proprietà currentChat
-        showMessages(chatItem) {
-            console.log(chatItem);
+        //funzione che prende in input l'oggetto cliccato e lo
+        //salva nella proprietà currentChat
+        onChatClick(chatItem) {
+            
+            this.currentChat = chatItem;
+            console.log(this.currentChat);
         },
+    beforeMount() {
+        //prima che viene caricato il dom dell'applicazione vado ad
+        //inizializzare l'utente da mostrare con il primo oggetto della lista
+        //contatti per evitare errore con null
+        this.currentChat = this.contacts[0];
+    },
     }
 }).mount("#app");

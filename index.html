@@ -49,7 +49,7 @@
                 </div>
                 <div class="chat-container">
                     <!-- item contatti generati dinamicamente -->
-                    <div class="chat-item" v-for="person in contacts" @click="showMessages(person)">
+                    <div class="chat-item" v-for="person in contacts" @click="onChatClick(person)">
                         <div class="avatar-container">
                             <img :src="'images/' + person.avatar + '.jpg'" :class="imgRound"
                                 :alt="'img' + person.avatar">
@@ -68,11 +68,11 @@
                 <div class="up-down-bar">
                     <div class="up-down-bar-item">
                         <div class="current-contact">
-                            <img :src="'images/' + contacts[0].avatar + '.jpg'"
-                            :alt="contacts[0].name" :class="imgRound">
+                            <img :src="'images/' + currentChat.avatar + '.jpg'"
+                            :alt="currentChat.name" :class="imgRound">
                         </div>
                         <div>
-                            <div>{{ contacts[0].name }}</div>
+                            <div>{{ currentChat.name }}</div>
                             <span class="text-gray">Ultimo accesso oggi alle 12:00</span>
                         </div>
                     </div>
