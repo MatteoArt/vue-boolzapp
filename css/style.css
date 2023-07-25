@@ -7,6 +7,9 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #DBDBD2;
+    height: 100vh;
+    /* aggiungo dopo che ho finito grafica
+    overflow: hidden; */
 }
 
 .green-header {
@@ -21,7 +24,7 @@ body {
 .container {
     position: relative;
     max-width: 1000px;
-    height: 600px;
+    height: 580px;
     margin: 30px auto;
     overflow: auto;
     display: flex;
@@ -70,6 +73,10 @@ body {
     min-height: 65px;
     flex-shrink: 0;
     background-color: #8EDAFC;
+    padding: 0 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .input-group {
@@ -178,4 +185,32 @@ body {
     padding: 10px 15px;
     border: 0;
     border-radius: 5px;
+    flex-grow: 1;
+}
+#message-bar {
+    padding: 0;
+}
+.btn {
+    padding: 15px 30px;
+    color: #A5A5A5;
+}
+.banner {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8EDAFC;
+}
+.caption {
+    font-size: 15px;
+}
+.info-link {
+    color: #777777;
+    font-size: small;
+}
+.message-row {
+    
 }
