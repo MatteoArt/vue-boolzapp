@@ -215,7 +215,7 @@ Vue.createApp({
 
             if (this.searchUser.trim().length > 0) {
                 return this.contacts.filter((userObj) => {
-                    return userObj.name.toLowerCase().includes(this.searchUser.trim());
+                    return userObj.name.toLowerCase().includes(this.searchUser.trim().toLowerCase());
                 });
             } else {
                 return this.contacts;
