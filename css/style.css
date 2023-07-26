@@ -224,6 +224,7 @@ body {
     padding: 10px 50px 15px 15px;
     border-radius: 10px;
     font-size: 14px;
+    position: relative;
 }
 .message-sent {
     background-color: #D5F9BA;
@@ -232,4 +233,26 @@ body {
 .message-received {
     background-color: white;
     align-self: flex-start;
+}
+.dropdown-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px;
+    margin: 5px;
+    color: #A5A5A5;
+    opacity: 0;
+    cursor: pointer;
+    display: inline-block;
+}
+.dropdown-btn:hover, .dropdown-btn:active {
+    opacity: 1;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.opacity-active {
+    opacity: 1;
 }

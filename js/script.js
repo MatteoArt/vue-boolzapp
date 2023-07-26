@@ -175,7 +175,8 @@ Vue.createApp({
                 message: "",
                 status: ''
             },
-            searchUser: ''
+            searchUser: '',
+            show: false
         }
     },
     methods: {
@@ -207,7 +208,9 @@ Vue.createApp({
                 curChat.messages.push(cpuMessage);
             }, 1000);
         },
-
+        toggle() {
+            this.show = !this.show;
+        }
     },
     computed: {
         contactsList() {
