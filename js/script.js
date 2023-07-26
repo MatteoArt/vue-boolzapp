@@ -174,14 +174,15 @@ Vue.createApp({
             newMessage: {
                 message: "",
                 status: ''
-            }
+            },
+            searchUser: ''
         }
     },
     methods: {
         //funzione che prende in input l'oggetto cliccato e lo
         //salva nella proprietà currentChat
         onChatClick(chatItem) {
-            
+
             this.currentChat = chatItem;
         },
         ctrlMessage(state) {
@@ -193,20 +194,33 @@ Vue.createApp({
         },
         addMessage(curChat) {
             //clono l'oggetto per eliminare la reattività
-            const newMessageClone = {...this.newMessage};
+            const newMessageClone = { ...this.newMessage };
             newMessageClone.status = 'sent';
 
             curChat.messages.push(newMessageClone);
 
             //intervallo che ogni 1 sec stampa il messaggio del computer
             setTimeout(function () {
-                const cpuMessage = {...this.newMessage};
+                const cpuMessage = { ...this.newMessage };
                 cpuMessage.message = 'ok';
                 cpuMessage.status = 'received';
                 curChat.messages.push(cpuMessage);
             }, 1000);
         },
 
+    },
+    computed: {
+        contactsList() {
+
+
+            if (this.searchUser.trim().length > 0) {
+                return this.contacts.filter((userObj) => {
+                    return userObj.name.toLowerCase().includes(this.searchUser.trim());
+                });
+            } else {
+                return this.contacts;
+            }
+        }
     },
     beforeMount() {
         //prima che viene caricato il dom dell'applicazione vado ad

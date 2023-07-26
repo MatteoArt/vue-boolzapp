@@ -43,13 +43,14 @@
                         <div class="btn-search">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <input type="text" class="input-val" placeholder="Cerca o inizia una nuova chat"
-                        >
+                        <input type="text" class="input-val" 
+                        placeholder="Cerca o inizia una nuova chat"
+                        v-model="searchUser">
                     </div>
                 </div>
                 <div class="chat-container">
                     <!-- item contatti generati dinamicamente -->
-                    <div class="chat-item" v-for="person in contacts" @click="onChatClick(person)">
+                    <div class="chat-item" v-for="person in contactsList" @click="onChatClick(person)">
                         <div class="avatar-container">
                             <img :src="'images/' + person.avatar + '.jpg'" :class="imgRound"
                                 :alt="'img' + person.avatar">
