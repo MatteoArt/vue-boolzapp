@@ -57,10 +57,12 @@
                         </div>
                         <div>
                             <h4>{{ person.name }}</h4>
-                            <span class="text-info">Ultimo messaggio inviato</span>
+                            <span class="text-info">
+                                {{ lastMessage(person.messages) }}
+                            </span>
                         </div>
                         <div class="item-hour">
-                            <span class="text-info">12:00</span>
+                            <span class="text-info">{{ lastHour(person.messages) }}</span>
                         </div>
                     </div>
                 </div>
@@ -74,7 +76,8 @@
                         </div>
                         <div>
                             <div>{{ currentChat.name }}</div>
-                            <span class="text-gray">Ultimo accesso oggi alle 12:00</span>
+                            <span class="text-gray" v-if="lastHour(currentChat.messages)==='N.D.'">Ultimo accesso {{ lastHour(currentChat.messages) }}</span>
+                            <span class="text-gray" v-else>Ultimo accesso oggi alle {{ lastHour(currentChat.messages) }}</span>
                         </div>
                     </div>
                     <div class="icon-container">
@@ -95,6 +98,7 @@
                                     </ul>
                                 </div>
                             </span>
+                            <span class="hour-message">{{ formatDateHour(mes.date) }}</span>
                             {{ mes.message }}
                         </div>
                     </div>

@@ -172,6 +172,7 @@ Vue.createApp({
             currentChat: null,
             messageClass: 'message',
             newMessage: {
+                date: '',
                 message: "",
                 status: ''
             },
@@ -196,7 +197,8 @@ Vue.createApp({
             //clono l'oggetto per eliminare la reattività
             const newMessageClone = { ...this.newMessage };
             newMessageClone.status = 'sent';
-
+            newMessageClone.date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+            
             curChat.messages.push(newMessageClone);
 
             //intervallo che ogni 1 sec stampa il messaggio del computer
@@ -204,6 +206,7 @@ Vue.createApp({
                 const cpuMessage = { ...this.newMessage };
                 cpuMessage.message = 'ok';
                 cpuMessage.status = 'received';
+                cpuMessage.date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
                 curChat.messages.push(cpuMessage);
             }, 1000);
         },
@@ -214,6 +217,37 @@ Vue.createApp({
             chatObj.messages;
             const index = chatObj.messages.indexOf(messageObj);
             chatObj.messages.splice(index,1);
+        },
+        //formatta una data e ritorna l'ora in ore e minuti
+        formatDateHour(date) {
+            let dateArr = date.split(" ");
+
+            let hourArr = dateArr[1].split(":");
+
+            return hourArr[0] + ':' + hourArr[1];
+        },
+        lastMessage(arr) {
+            if (arr.length === 0) {
+                return "Nessun messaggio presente";
+            }
+
+            const last = arr[arr.length-1];
+
+            if(last.message.length > 25) {
+                return `${last.message.substring(0,25)}...`;
+            } else {
+                return last.message;
+            }
+            
+        },
+        lastHour(arrMessages) {
+            if (arrMessages.length === 0) {
+                return "N.D.";
+            }
+            const last = arrMessages[arrMessages.length-1];
+
+            return this.formatDateHour(last.date);
+
         }
     },
     computed: {
