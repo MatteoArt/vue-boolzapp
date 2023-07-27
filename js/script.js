@@ -176,7 +176,6 @@ Vue.createApp({
                 status: ''
             },
             searchUser: '',
-            show: false
         }
     },
     methods: {
@@ -208,8 +207,13 @@ Vue.createApp({
                 curChat.messages.push(cpuMessage);
             }, 1000);
         },
-        toggle() {
-            this.show = !this.show;
+        toggle(mesObj) {
+            mesObj.show = !mesObj.show;
+        },
+        deleteMessage(messageObj,chatObj) { //recupero il messaggio cliccato per poi eliminarlo
+            chatObj.messages;
+            const index = chatObj.messages.indexOf(messageObj);
+            chatObj.messages.splice(index,1);
         }
     },
     computed: {

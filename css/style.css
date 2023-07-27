@@ -245,14 +245,29 @@ body {
     cursor: pointer;
     display: inline-block;
 }
-.dropdown-btn:hover, .dropdown-btn:active {
+.dropdown-btn:hover, .dropdown-btn:active, .dropdown-btn.opened {
     opacity: 1;
 }
 .dropdown-menu {
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 0;
+    color: black;
+    z-index: 50;
+    width: 140px;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 3px 3px 3px lightgray;
 }
-.opacity-active {
-    opacity: 1;
+.dropdown-menu ul {
+    list-style-type: none;
+    padding: 15px;
+}
+.dropdown-menu ul li:first-child {
+    padding-bottom: 10px;
+}
+.dropdown-menu ul li:last-child:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
