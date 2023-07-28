@@ -7,7 +7,7 @@ Vue.createApp({
             contacts: [
                 {
                     name: "Michele",
-                    avatar: "_1",
+                    avatar: "img1",
                     messages: [
                         {
                             date: "10/01/2020 15:30:55",
@@ -33,7 +33,7 @@ Vue.createApp({
                 },
                 {
                     name: "Fabio",
-                    avatar: "_2",
+                    avatar: "img2",
                     messages: [
                         {
                             date: "20/03/2020 16:30:00",
@@ -54,7 +54,7 @@ Vue.createApp({
                 },
                 {
                     name: "Samuele",
-                    avatar: "_3",
+                    avatar: "img3",
                     messages: [
                         {
                             date: "28/03/2020 10:10:40",
@@ -75,7 +75,7 @@ Vue.createApp({
                 },
                 {
                     name: "Alessandro B.",
-                    avatar: "_4",
+                    avatar: "img4",
                     messages: [
                         {
                             date: "10/01/2020 15:30:55",
@@ -91,7 +91,7 @@ Vue.createApp({
                 },
                 {
                     name: 'Alessandro L.',
-                    avatar: '_5',
+                    avatar: 'img5',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -107,7 +107,7 @@ Vue.createApp({
                 },
                 {
                     name: 'Claudia',
-                    avatar: '_6',
+                    avatar: 'img6',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -128,7 +128,7 @@ Vue.createApp({
                 },
                 {
                     name: 'Federico',
-                    avatar: '_7',
+                    avatar: 'img7',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -144,7 +144,7 @@ Vue.createApp({
                 },
                 {
                     name: 'Davide',
-                    avatar: '_8',
+                    avatar: 'img8',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
