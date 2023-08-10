@@ -215,8 +215,17 @@ Vue.createApp({
         },
         deleteMessage(messageObj,chatObj) { //recupero il messaggio cliccato per poi eliminarlo
             chatObj.messages;
+            let originalFinalIndex = chatObj.messages.length - 1;
             const index = chatObj.messages.indexOf(messageObj);
             chatObj.messages.splice(index,1);
+            console.log(chatObj.messages);
+            console.log(chatObj.messages.length - 1)
+
+            if (index !== (originalFinalIndex)) {
+                console.log(index);
+                console.log(chatObj.messages[index]);
+                console.log("merda");
+            }
         },
         //formatta una data e ritorna l'ora in ore e minuti
         formatDateHour(date) {
