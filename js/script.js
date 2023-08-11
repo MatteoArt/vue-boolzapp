@@ -177,6 +177,16 @@ Vue.createApp({
                 status: ''
             },
             searchUser: '',
+            cpuReplies: ["ciao", "va bene", "come stai?", "ok, a dopo allora",
+                "bel tempo oggi", "oggi è nuvoloso, peccato volevo uscire",
+                "tutto bene, tu?", "tiro avanti", "ok", "sono occupato stasera", "non posso, lavoro",
+                "stacco da lavoro alle 18", "tutto fatto", "mi spiace, non posso esserci",
+                "va bene, allora ci sarò!", "alla grande!", "stasera vuoi andare al cinema?",
+                "stasera non posso, devo andare in palestra", "come te la passi?", "hai visto che bel tempo oggi?",
+                "fa molto caldo", "piove a dirotto, spero non si allaghi il quartiere!", "devo andare a ritirare la macchina alle 17",
+                "ascoltavo musica", "che fai?", "vedevo un film thriller", "vado a farmi una doccia", "ascoltavo un pò di rock",
+                "domani che fai?", "ci vediamo domani sera?", "ciao, alla prossima", "stammi bene",
+                "volevo formattare il pc", "te ne intendi di programmazione in Php?"],
         }
     },
     methods: {
@@ -193,18 +203,38 @@ Vue.createApp({
                 return 'message-received';
             }
         },
+        validateMessage(mess) {
+            if (mess.trim() === "") {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        //funzione che estrae una parola random dall'array delle risposte del pc
+        randomWord(listaFrasi) {
+            let i = Math.floor(Math.random() * listaFrasi.length);
+            return listaFrasi[i];
+        },
         addMessage(curChat) {
+            //controllo se il messaggio è vuoto, se vuoto fermo subito la funzione
+            if (!this.validateMessage(this.newMessage.message)) {
+                return;
+            }
+            this.newMessage.message = this.newMessage.message.trim();
             //clono l'oggetto per eliminare la reattività
             const newMessageClone = { ...this.newMessage };
             newMessageClone.status = 'sent';
             newMessageClone.date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
-            
+
             curChat.messages.push(newMessageClone);
 
+            //inviato il messaggio svuoto la casella di input
+            this.newMessage.message = "";
+
             //intervallo che ogni 1 sec stampa il messaggio del computer
-            setTimeout(function () {
+            setTimeout(() => {
                 const cpuMessage = { ...this.newMessage };
-                cpuMessage.message = 'ok';
+                cpuMessage.message = this.randomWord(this.cpuReplies);
                 cpuMessage.status = 'received';
                 cpuMessage.date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
                 curChat.messages.push(cpuMessage);
@@ -213,19 +243,10 @@ Vue.createApp({
         toggle(mesObj) {
             mesObj.show = !mesObj.show;
         },
-        deleteMessage(messageObj,chatObj) { //recupero il messaggio cliccato per poi eliminarlo
+        deleteMessage(messageObj, chatObj) { //recupero il messaggio cliccato per poi eliminarlo
             chatObj.messages;
-            let originalFinalIndex = chatObj.messages.length - 1;
             const index = chatObj.messages.indexOf(messageObj);
-            chatObj.messages.splice(index,1);
-            console.log(chatObj.messages);
-            console.log(chatObj.messages.length - 1)
-
-            if (index !== (originalFinalIndex)) {
-                console.log(index);
-                console.log(chatObj.messages[index]);
-                console.log("merda");
-            }
+            chatObj.messages.splice(index, 1);
         },
         //formatta una data e ritorna l'ora in ore e minuti
         formatDateHour(date) {
@@ -240,20 +261,20 @@ Vue.createApp({
                 return "Nessun messaggio presente";
             }
 
-            const last = arr[arr.length-1];
+            const last = arr[arr.length - 1];
 
-            if(last.message.length > 25) {
-                return `${last.message.substring(0,25)}...`;
+            if (last.message.length > 25) {
+                return `${last.message.substring(0, 25)}...`;
             } else {
                 return last.message;
             }
-            
+
         },
         lastHour(arrMessages) {
             if (arrMessages.length === 0) {
                 return "N.D.";
             }
-            const last = arrMessages[arrMessages.length-1];
+            const last = arrMessages[arrMessages.length - 1];
 
             return this.formatDateHour(last.date);
 

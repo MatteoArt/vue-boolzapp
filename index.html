@@ -111,7 +111,9 @@
                     placeholder="Scrivi un messaggio" @keyup.enter="addMessage(currentChat)"
                     v-model="newMessage.message">
                     <div class="btn">
-                        <i class="fa-solid fa-microphone fa-lg"></i>
+                        <i v-if="newMessage.message.trim().length > 0" class="fa-solid fa-paper-plane fa-lg"
+                            @click="addMessage(currentChat)" style="cursor: pointer;"></i>
+                        <i v-else class="fa-solid fa-microphone fa-lg"></i>
                     </div>
                 </div>
             </div>

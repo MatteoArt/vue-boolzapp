@@ -197,6 +197,7 @@ body {
 .btn {
     padding: 15px 30px;
     color: #A5A5A5;
+    width: 80px;
 }
 .banner {
     width: 45px;
