@@ -76,7 +76,7 @@
                         </div>
                         <div>
                             <div>{{ currentChat.name }}</div>
-                            <span class="text-gray" v-if="lastHour(currentChat.messages)==='N.D.'">Ultimo accesso {{ lastHour(currentChat.messages) }}</span>
+                            <span class="text-gray" v-if="lastHour(currentChat.messages)===''"></span>
                             <span class="text-gray" v-else>Ultimo accesso oggi alle {{ lastHour(currentChat.messages) }}</span>
                         </div>
                     </div>

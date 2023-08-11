@@ -272,7 +272,7 @@ Vue.createApp({
         },
         lastHour(arrMessages) {
             if (arrMessages.length === 0) {
-                return "N.D.";
+                return "";
             }
             const last = arrMessages[arrMessages.length - 1];
 
