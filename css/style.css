@@ -52,6 +52,7 @@ body {
     justify-content: space-between;
     background-color: #EAEAEA;
     padding: 0 20px 0 10px;
+    position: relative;
 }
 
 .up-down-bar-item {
@@ -111,6 +112,7 @@ body {
     gap: 15px;
     cursor: pointer;
 }
+
 .chat-item:hover {
     background-color: #E9EBEB;
 }
@@ -171,6 +173,7 @@ body {
     border-bottom-left-radius: 0;
     flex-grow: 1;
 }
+
 .btn-search {
     background-color: white;
     font-size: 15px;
@@ -183,6 +186,7 @@ body {
     border-bottom-right-radius: 0;
     flex-shrink: 0;
 }
+
 .input-message {
     background-color: white;
     font-size: 15px;
@@ -191,14 +195,17 @@ body {
     border-radius: 5px;
     flex-grow: 1;
 }
+
 #message-bar {
     padding: 0;
 }
+
 .btn {
     padding: 15px 30px;
     color: #A5A5A5;
     width: 80px;
 }
+
 .banner {
     width: 45px;
     height: 45px;
@@ -209,32 +216,39 @@ body {
     justify-content: center;
     color: #8EDAFC;
 }
+
 .caption {
     font-size: 15px;
 }
+
 .info-link {
     color: #777777;
     font-size: small;
 }
+
 .message-row {
     display: flex;
     flex-direction: column;
     padding: 4px 0;
 }
+
 .message {
     padding: 10px 50px 25px 15px;
     border-radius: 10px;
     font-size: 14px;
     position: relative;
 }
+
 .message-sent {
     background-color: #D5F9BA;
     align-self: flex-end;
 }
+
 .message-received {
     background-color: white;
     align-self: flex-start;
 }
+
 .dropdown-btn {
     position: absolute;
     top: 0;
@@ -246,9 +260,13 @@ body {
     cursor: pointer;
     display: inline-block;
 }
-.dropdown-btn:hover, .dropdown-btn:active, .dropdown-btn.opened {
+
+.dropdown-btn:hover,
+.dropdown-btn:active,
+.dropdown-btn.opened {
     opacity: 1;
 }
+
 .dropdown-menu {
     position: absolute;
     top: 15px;
@@ -261,17 +279,46 @@ body {
     border-radius: 3px;
     box-shadow: 3px 3px 3px lightgray;
 }
-.dropdown-menu ul {
+.dropdown {
+    position: absolute;
+    top: 70%;
+    right: 20px;
+    width: 170px;
+    height: 140px;
+    z-index: 100;
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown-menu ul, .dropdown ul {
     list-style-type: none;
     padding: 15px;
 }
+.dropdown ul li {
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+.dropdown ul li:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    color: red;
+}
+
 .dropdown-menu ul li:first-child {
     padding-bottom: 10px;
 }
+
 .dropdown-menu ul li:last-child:hover {
     cursor: pointer;
     text-decoration: underline;
 }
+
 .hour-message {
     display: inline-block;
     position: absolute;
@@ -280,4 +327,17 @@ body {
     font-size: 10px;
     padding: 4px;
     color: rgb(173, 173, 173);
+}
+
+.flex-center {
+    align-items: center;
+}
+
+.btn-ellipsis {
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    cursor: pointer;
 }

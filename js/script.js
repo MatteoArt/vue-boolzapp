@@ -177,6 +177,7 @@ Vue.createApp({
                 status: ''
             },
             searchUser: '',
+            dropShow: false,
             cpuReplies: ["ciao", "va bene", "come stai?", "ok, a dopo allora",
                 "bel tempo oggi", "oggi è nuvoloso, peccato volevo uscire",
                 "tutto bene, tu?", "tiro avanti", "ok", "sono occupato stasera", "non posso, lavoro",
@@ -190,6 +191,13 @@ Vue.createApp({
         }
     },
     methods: {
+        addClassFlexCenter(messageUser) {
+            if (messageUser === "") {
+                return "flex-center";
+            } else {
+                return "";
+            }
+        },
         //funzione che prende in input l'oggetto cliccato e lo
         //salva nella proprietà currentChat
         onChatClick(chatItem) {
@@ -243,10 +251,41 @@ Vue.createApp({
         toggle(mesObj) {
             mesObj.show = !mesObj.show;
         },
+        dropToggle() {
+            this.dropShow = !this.dropShow;
+        },
         deleteMessage(messageObj, chatObj) { //recupero il messaggio cliccato per poi eliminarlo
             chatObj.messages;
             const index = chatObj.messages.indexOf(messageObj);
             chatObj.messages.splice(index, 1);
+        },
+        //metodo che cancella tutti i messaggi di una chat
+        deleteAllMessage(arrMess) {
+            //impostando a zero la lunghezza dell'array vengono eliminati tutti i suoi elementi
+            arrMess.length = 0;
+        },
+        //metodo che cancella tutti i dati di una chat
+        deleteChat(chatUser) {
+            //resetta la chat corrente
+            this.currentChat = {};
+
+            //indice della chat da eliminare
+            const index = this.contacts.indexOf(chatUser);
+
+            if (index !== -1) {
+
+                this.contacts.splice(index, 1);
+            }
+
+            if (index === this.contacts.length && this.contacts.length > 1) {
+                console.log(index);
+                this.currentChat = this.contacts[index - 1];
+            } else if (index === 0 && this.contacts.length === 1) {
+                return;
+            }
+             else {
+                this.currentChat = this.contacts[index];
+            }
         },
         //formatta una data e ritorna l'ora in ore e minuti
         formatDateHour(date) {
@@ -258,7 +297,7 @@ Vue.createApp({
         },
         lastMessage(arr) {
             if (arr.length === 0) {
-                return "Nessun messaggio presente";
+                return "";
             }
 
             const last = arr[arr.length - 1];
