@@ -188,6 +188,7 @@ Vue.createApp({
                 "ascoltavo musica", "che fai?", "vedevo un film thriller", "vado a farmi una doccia", "ascoltavo un pò di rock",
                 "domani che fai?", "ci vediamo domani sera?", "ciao, alla prossima", "stammi bene",
                 "volevo formattare il pc", "te ne intendi di programmazione in Php?"],
+            imgAddedCounter: 0,
         }
     },
     methods: {
@@ -298,9 +299,37 @@ Vue.createApp({
                 };
                 return;
             }
-             else {
+            else {
                 this.currentChat = this.contacts[index];
             }
+        },
+        addChatContact() {
+            const nameChat = prompt("Inserisci il nome del nuovo contatto che vuoi aggiungere:");
+            const urlImg = prompt("Inserisci il link all'immagine che vuoi usare come icona del contatto: ( usare il link: https://picsum.photos/80 )");
+
+
+            if ((nameChat === null || nameChat === "") || (urlImg === null || urlImg === "")) {
+                alert("Non puoi lasciare i campi vuoti");
+                return;
+            } else if (!urlImg.startsWith("http")) {
+                alert("Inserisci un url valido, che inizi con http:// o https://");
+                return;
+            } else {
+                ++this.imgAddedCounter;
+                
+                let rand = `?random=${this.imgAddedCounter}`;
+
+                //creo l'oggetto che verrà poi pushato dentro l'array dei contatti
+                let newChat = {
+                    name: nameChat,
+                    avatar: urlImg + rand,
+                    messages: []
+                };
+
+                this.contacts.push(newChat);
+                console.log(this.contacts);
+            }
+
         },
         //formatta una data e ritorna l'ora in ore e minuti
         formatDateHour(date) {
