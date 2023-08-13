@@ -224,6 +224,10 @@ Vue.createApp({
             return listaFrasi[i];
         },
         addMessage(curChat) {
+            if (curChat.name === "") {
+                alert("Non puoi scrivere perchè non ci sono più contatti presenti.\nRicarica l'applicazione per ripristinare i contatti o aggiungi dei nuovi contatti per poter scrivere.");
+                return;
+            }
             //controllo se il messaggio è vuoto, se vuoto fermo subito la funzione
             if (!this.validateMessage(this.newMessage.message)) {
                 return;
@@ -266,6 +270,12 @@ Vue.createApp({
         },
         //metodo che cancella tutti i dati di una chat
         deleteChat(chatUser) {
+            if (chatUser.name === "") {
+                alert("Nessuna chat presente");
+                return;
+            }
+
+            this.deleteAllMessage(this.currentChat.messages);
             //resetta la chat corrente
             this.currentChat = {};
 
@@ -273,14 +283,19 @@ Vue.createApp({
             const index = this.contacts.indexOf(chatUser);
 
             if (index !== -1) {
+                this.deleteAllMessage(this.contacts[index].messages);
 
                 this.contacts.splice(index, 1);
             }
 
-            if (index === this.contacts.length && this.contacts.length > 1) {
-                console.log(index);
+            if (index === this.contacts.length && this.contacts.length > 0) {
                 this.currentChat = this.contacts[index - 1];
-            } else if (index === 0 && this.contacts.length === 1) {
+            } else if (index === 0 && this.contacts.length === 0) { //l'array delle chat è stato svuotato e quindi current chat non punta più a nulla
+                this.currentChat = {
+                    name: "",
+                    avatar: "avatar-default",
+                    messages: []
+                };
                 return;
             }
              else {
