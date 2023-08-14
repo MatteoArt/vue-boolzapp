@@ -20,7 +20,7 @@
                 <div class="up-down-bar" id="user-bar">
                     <div class="up-down-bar-item">
                         <div class="avatar-container" id="user-profile">
-                            <img :src="'images/' + user.image" :class="imgRound">
+                            <img :src="'images/' + user.image" :class="imgRound" alt="">
                         </div>
                         <div>{{ user.userName }}</div>
                     </div>
@@ -57,7 +57,7 @@
                             <img v-if="person.avatar.startsWith('http')"
                             :src="person.avatar" :class="imgRound" alt="">
                             <img v-else :src="'images/' + person.avatar + '.jpg'" 
-                            :class="imgRound">
+                            :class="imgRound" alt="">
                         </div>
                         <div>
                             <h4>{{ person.name }}</h4>
@@ -76,15 +76,15 @@
                     <div class="up-down-bar-item">
                         <div class="current-contact">
                             <img v-if="currentChat.avatar.startsWith('http')" :src="currentChat.avatar"
-                            :class="imgRound">
+                            :class="imgRound" alt="">
                             <img v-else :src="'images/' + currentChat.avatar + '.jpg'" 
-                            :class="imgRound">
+                            :class="imgRound" alt="">
                         </div>
                         <div>
                             <div>{{ currentChat.name }}</div>
-                            <span class="text-gray" v-if="lastHour(currentChat.messages)===''"></span>
-                            <span class="text-gray" v-else>Ultimo accesso oggi alle {{ lastHour(currentChat.messages)
-                                }}</span>
+                            <span class="text-gray">
+                                {{ currentChat.statoContatto }}
+                            </span>
                         </div>
                     </div>
                     <div class="icon-container">

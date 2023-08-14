@@ -229,6 +229,10 @@ Vue.createApp({
                 alert("Non puoi scrivere perchè non ci sono più contatti presenti.\nRicarica l'applicazione per ripristinare i contatti o aggiungi dei nuovi contatti per poter scrivere.");
                 return;
             }
+
+            //creo proprietà che indica lo stato del contatto
+            curChat.statoContatto = "sta scrivendo...";
+
             //controllo se il messaggio è vuoto, se vuoto fermo subito la funzione
             if (!this.validateMessage(this.newMessage.message)) {
                 return;
@@ -251,7 +255,17 @@ Vue.createApp({
                 cpuMessage.status = 'received';
                 cpuMessage.date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
                 curChat.messages.push(cpuMessage);
+                curChat.statoContatto = "";
             }, 1000);
+
+            setTimeout(() => {
+                curChat.statoContatto = "online";
+            }, 1001);
+
+            setTimeout(() => {
+                curChat.statoContatto = "";
+            }, 3000);
+
         },
         toggle(mesObj) {
             mesObj.show = !mesObj.show;
