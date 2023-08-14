@@ -20,7 +20,7 @@
                 <div class="up-down-bar" id="user-bar">
                     <div class="up-down-bar-item">
                         <div class="avatar-container" id="user-profile">
-                            <img :src="'images/' + user.image" alt="Avatar user" :class="imgRound">
+                            <img :src="'images/' + user.image" :class="imgRound">
                         </div>
                         <div>{{ user.userName }}</div>
                     </div>
@@ -55,9 +55,9 @@
                         :class="addClassFlexCenter(lastMessage(person.messages))">
                         <div class="avatar-container">
                             <img v-if="person.avatar.startsWith('http')"
-                            :src="person.avatar" :class="imgRound" :alt="'img' + person.name">
-                            <img v-else :src="'images/' + person.avatar + '.jpg'" :class="imgRound"
-                                :alt="'img' + person.avatar">
+                            :src="person.avatar" :class="imgRound" alt="">
+                            <img v-else :src="'images/' + person.avatar + '.jpg'" 
+                            :class="imgRound">
                         </div>
                         <div>
                             <h4>{{ person.name }}</h4>
@@ -76,9 +76,9 @@
                     <div class="up-down-bar-item">
                         <div class="current-contact">
                             <img v-if="currentChat.avatar.startsWith('http')" :src="currentChat.avatar"
-                            :class="imgRound" :alt="currentChat.name">
-                            <img v-else :src="'images/' + currentChat.avatar + '.jpg'" :alt="currentChat.name"
-                                :class="imgRound">
+                            :class="imgRound">
+                            <img v-else :src="'images/' + currentChat.avatar + '.jpg'" 
+                            :class="imgRound">
                         </div>
                         <div>
                             <div>{{ currentChat.name }}</div>
