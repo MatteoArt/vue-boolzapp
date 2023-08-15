@@ -230,7 +230,7 @@ Vue.createApp({
                 return;
             }
 
-            //creo proprietà che indica lo stato del contatto
+            //aggiorno proprietà stato contatto
             curChat.statoContatto = "sta scrivendo...";
 
             //controllo se il messaggio è vuoto, se vuoto fermo subito la funzione
@@ -255,7 +255,6 @@ Vue.createApp({
                 cpuMessage.status = 'received';
                 cpuMessage.date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
                 curChat.messages.push(cpuMessage);
-                curChat.statoContatto = "";
             }, 1000);
 
             setTimeout(() => {
@@ -263,8 +262,10 @@ Vue.createApp({
             }, 1001);
 
             setTimeout(() => {
-                curChat.statoContatto = "";
-            }, 3000);
+                let ultimoAccesso = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+                let lastAccess = this.formatDateHour(ultimoAccesso);
+                curChat.statoContatto = `Ultimo accesso oggi alle ${lastAccess}`;
+            }, 4000);
 
         },
         toggle(mesObj) {
@@ -395,5 +396,12 @@ Vue.createApp({
         //inizializzare l'utente da mostrare con il primo oggetto della lista
         //contatti per evitare errore con null
         this.currentChat = this.contacts[0];
+    },
+    mounted() {
+        for (let i = 0; i < this.contacts.length; i++) {
+            let messaggi = this.contacts[i].messages;
+            let ora = this.lastHour(messaggi);
+            this.contacts[i].statoContatto = `Ultimo accesso oggi alle ${ora}`;
+        }
     }
 }).mount("#app");
