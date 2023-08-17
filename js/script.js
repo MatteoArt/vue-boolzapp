@@ -248,6 +248,10 @@ Vue.createApp({
             //inviato il messaggio svuoto la casella di input
             this.newMessage.message = "";
 
+            setTimeout(() => {
+                this.$refs.scrollContainer.scrollTop = this.$refs.scrollContainer.scrollHeight;
+            }, 0);
+
             //intervallo che ogni 1 sec stampa il messaggio del computer
             setTimeout(() => {
                 const cpuMessage = { ...this.newMessage };
@@ -255,6 +259,10 @@ Vue.createApp({
                 cpuMessage.status = 'received';
                 cpuMessage.date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
                 curChat.messages.push(cpuMessage);
+            }, 1000);
+
+            setTimeout(() => {
+                this.$refs.scrollContainer.scrollTop = this.$refs.scrollContainer.scrollHeight;
             }, 1000);
 
             setTimeout(() => {

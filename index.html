@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="main-content">
+                <div class="main-content" ref="scrollContainer">
                     <div class="message-row" v-for="mes in currentChat.messages">
                         <div :class="messageClass + ' ' + ctrlMessage(mes.status)">
                             <span class="dropdown-btn" :class="{'opened': mes.show}" @click="toggle(mes)">
