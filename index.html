@@ -58,8 +58,8 @@
                             <img v-else :src="'images/' + person.avatar + '.jpg'" :class="imgRound" alt="">
                         </div>
                         <div>
-                            <h4>{{ person.name }}</h4>
-                            <span v-if="lastMessage(person.messages) !== ''" class="text-info">
+                            <h4 class="text-user-tablet">{{ person.name }}</h4>
+                            <span v-if="lastMessage(person.messages) !== ''" class="text-info truncate">
                                 {{ lastMessage(person.messages) }}
                             </span>
                         </div>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container-right">
+            <div class="container-right" ref="contenutoChat">
                 <div class="up-down-bar">
                     <div class="up-down-bar-item">
                         <div class="current-contact">

@@ -204,6 +204,20 @@ Vue.createApp({
         onChatClick(chatItem) {
 
             this.currentChat = chatItem;
+
+            //recupero il contenitore di destra
+            let containerRight = this.$refs.contenutoChat;
+        
+            if (matchMedia("(max-width: 576px)").matches) {
+                //se l'elemento non contiene la classe
+                if (!containerRight.classList.contains("show-chat")) {
+                    containerRight.classList.add("show-chat");
+                } else if (containerRight.classList.contains("show-chat")) {
+                    containerRight.classList.remove("show-chat");
+                }
+
+                
+            }
         },
         ctrlMessage(state) {
             if (state === 'sent') {
