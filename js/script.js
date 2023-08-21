@@ -219,6 +219,13 @@ Vue.createApp({
                 
             }
         },
+        backChat() {
+            let containerRight = this.$refs.contenutoChat;
+
+            if (containerRight.classList.contains("show-chat")) {
+                containerRight.classList.remove("show-chat");
+            }
+        },
         ctrlMessage(state) {
             if (state === 'sent') {
                 return 'message-sent';

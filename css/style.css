@@ -64,7 +64,8 @@ body {
 
 .main-content {
     flex-grow: 1;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     background-image: url('../images/mine.jpg');
     padding: 50px 60px 10px;
 }
@@ -341,6 +342,10 @@ body {
     cursor: pointer;
 }
 
+.btn-back {
+    display: none;
+}
+
 /* media queries */
 @media screen and (max-width: 950px) {
     .truncate {
@@ -422,5 +427,14 @@ body {
         right: 0;
         left: 0;
         bottom: 0;
+    }
+    .d-none {
+        display: none;
+    }
+    .btn-back {
+        display: block;
+        color: #7D7D7D;
+        padding-right: 5px;
+        cursor: pointer;
     }
 }

@@ -72,6 +72,9 @@
             <div class="container-right" ref="contenutoChat">
                 <div class="up-down-bar">
                     <div class="up-down-bar-item">
+                        <div class="btn-back" @click="backChat">
+                            <i class="fa-solid fa-left-long fa-xl"></i>
+                        </div>
                         <div class="current-contact">
                             <img v-if="currentChat.avatar.startsWith('http')" :src="currentChat.avatar"
                                 :class="imgRound" alt="">
@@ -86,7 +89,7 @@
                     </div>
                     <div class="icon-container">
                         <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-                        <i class="fa-solid fa-paperclip fa-lg"></i>
+                        <i class="fa-solid fa-paperclip fa-lg d-none"></i>
                         <div class="btn-ellipsis" @click="dropToggle">
                             <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
                             <div class="dropdown" v-if="dropShow">
